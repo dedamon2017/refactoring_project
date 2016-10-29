@@ -2,8 +2,6 @@ package it.discovery.refactoring;
 
 import org.junit.Test;
 
-import java.util.Scanner;
-
 public class MainClassTest {
 
     public String operation;
@@ -26,7 +24,7 @@ public class MainClassTest {
         secondArgument = "3";
         scale = "10";
         isConsoleEnabled = "true";
-        MainClass.calculateOperation(operation, firstArgument, secondArgument, scale, isConsoleEnabled, "");
+        MainClass.calculate(operation, firstArgument, secondArgument, scale, isConsoleEnabled, "");
     }
 
     @Test

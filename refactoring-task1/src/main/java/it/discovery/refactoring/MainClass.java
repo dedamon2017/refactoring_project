@@ -4,10 +4,10 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 
 /**
- * Eto kalkulyator
+ * Calculation unit that implements arithmetic operations
  */
 public class MainClass {
-    public static String otchet = null;
+    public static String report = null;
 
     // Primer ispolzovaniya: zapustit is IDE s argumentami
     // 1) znak operacii
@@ -17,24 +17,24 @@ public class MainClass {
     // 5) vyvod v konsol(false) ili file(true) (opcionalno)
     // naprimer, + 2 2 true
     public static void main(String[] argumenty) {
-        String operaciya = argumenty[0];
-        String pervoe = argumenty[1];
-        String vtoroe = argumenty[2];
-        String schis = null;
+        String operation = argumenty[0];
+        String firstOp = argumenty[1];
+        String secondOp = argumenty[2];
+        String scale = null;
         try {
-            schis = argumenty[3];
-        } catch (ArrayIndexOutOfBoundsException iskl) {
-            schis = "10";
+            scale = argumenty[3];
+        } catch (ArrayIndexOutOfBoundsException e) {
+            scale = "10";
         }
 
-        String konsol = null;
+        String toConsole = null;
         try {
-            konsol = argumenty[4];
+            toConsole = argumenty[4];
         } catch (ArrayIndexOutOfBoundsException iskl) {
-            konsol = "false";
+            toConsole = "false";
         }
 
-        calculateOperation(operaciya, pervoe, vtoroe, schis, konsol, "");
+        calculate(operation, firstOp, secondOp, scale, toConsole, "");
     }
 
     /**
@@ -42,50 +42,50 @@ public class MainClass {
      *
      * @param argumenty
      */
-    public static int calculateOperation(String oper, String per, String vt, String schis, String kon, String temp) {
-        otchet = "";
-        otchet = "";
-        otchet += "Nachali rabotu\n";
+    public static int calculate(String operation, String firstOp, String secondOp, String scale, String console, String temp) {
+        report = "";
+        report = "";
+        report += "Nachali rabotu\n";
 //		String operaciya = argumenty[10];
 //		boolean probel = operaciya.equals("");
 //		if (probel) {
 //			operaciya = "+";
 //		}		
 
-        boolean con = false;
-        if (kon != null && kon.equals("true")) {
-            con = true;
+        boolean isConsole = false;
+        if (console != null && console.equals("true")) {
+            isConsole = true;
         }
 
-        switch (oper) {
+        switch (operation) {
             case "+": {
-                otchet += "Operaciya slojit\n";
-                int pervoeInt = 0;
+                report += "Operaciya slojit\n";
+                int firstNumber = 0;
                 try {
-                    pervoeInt = Integer.parseInt(per);
+                    firstNumber = Integer.parseInt(firstOp);
                 } catch (Exception ex) {
                     System.out.println("Oshibka");
                 }
-                int vtoroeInt = 0;
+                int secondNumber = 0;
                 try {
-                    vtoroeInt = Integer.parseInt(vt);
+                    secondNumber = Integer.parseInt(secondOp);
                 } catch (Exception ex) {
                     System.out.println("Oshibka");
                 }
 
-                otchet += "Argument 1 " + convertToScale(pervoeInt, schis) + "\n";
-                otchet += "Argument 2 " + convertToScale(vtoroeInt, schis) + "\n";
-                int summa = pervoeInt + vtoroeInt;
-                otchet += "Rezultat " + convertToScale(summa, schis) + "\n";
-                System.out.println(summa);
+                report += "Argument 1 " + convertToScale(firstNumber, scale) + "\n";
+                report += "Argument 2 " + convertToScale(secondNumber, scale) + "\n";
+                int sum = firstNumber + secondNumber;
+                report += "Rezultat " + convertToScale(sum, scale) + "\n";
+                System.out.println(sum);
                 try {
-                    otchet += "Zakonchili rabotu\n";
-                    if (con) {
-                        System.out.println(otchet);
+                    report += "Zakonchili rabotu\n";
+                    if (isConsole) {
+                        System.out.println(report);
                     } else {
-                        FileWriter w = new FileWriter("d:\\test.txt");
-                        BufferedWriter out = new BufferedWriter(w);
-                        out.write(otchet);
+                        FileWriter writer = new FileWriter("d:\\test.txt");
+                        BufferedWriter out = new BufferedWriter(writer);
+                        out.write(report);
                         out.close();
                     }
 
@@ -98,74 +98,74 @@ public class MainClass {
             break;
 
             case "-": {
-                otchet += "Operaciya vychitanie\n";
-                int pervoeInt = 0;
+                report += "Operaciya vychitanie\n";
+                int firstNumber = 0;
                 try {
-                    pervoeInt = Integer.parseInt(per);
+                    firstNumber = Integer.parseInt(firstOp);
                 } catch (Exception ex) {
                     System.out.println("Oshibka");
                 }
-                int vtoroeInt = 0;
+                int secondNumber = 0;
                 try {
-                    vtoroeInt = Integer.parseInt(vt);
+                    secondNumber = Integer.parseInt(secondOp);
                 } catch (Exception ex) {
-                    System.out.println(printErrorMessage());
+                    System.out.println(getErrorMessage());
                 }
 
-                otchet += "Argument 1 " + convertToScale(pervoeInt, schis) + "\n";
-                otchet += "Argument 2 " + convertToScale(vtoroeInt, schis) + "\n";
-                pervoeInt -= vtoroeInt;
-                otchet += "Rezultat " + convertToScale(pervoeInt, schis) + "\n";
-                System.out.println(pervoeInt);
+                report += "Argument 1 " + convertToScale(firstNumber, scale) + "\n";
+                report += "Argument 2 " + convertToScale(secondNumber, scale) + "\n";
+                firstNumber -= secondNumber;
+                report += "Rezultat " + convertToScale(firstNumber, scale) + "\n";
+                System.out.println(firstNumber);
                 try {
-                    otchet += "Zakonchili rabotu\n";
-                    if (con) {
-                        System.out.println(otchet);
+                    report += "Zakonchili rabotu\n";
+                    if (isConsole) {
+                        System.out.println(report);
                     } else {
-                        FileWriter w = new FileWriter("d:\\test.txt");
-                        BufferedWriter out = new BufferedWriter(w);
-                        out.write(otchet);
+                        FileWriter writer = new FileWriter("d:\\test.txt");
+                        BufferedWriter out = new BufferedWriter(writer);
+                        out.write(report);
                         out.close();
                     }
 
                 } catch (Exception e) {
-                    System.out.println(printErrorMessage());
+                    System.out.println(getErrorMessage());
                     return -1;
                 }
             }
             ;
             break;
             case "*": {
-                otchet += "Operaciya umnojeniya\n";
-                int pervoeInt = 0;
+                report += "Operaciya umnojeniya\n";
+                int firstNumber = 0;
                 try {
-                    pervoeInt = Integer.parseInt(per);
+                    firstNumber = Integer.parseInt(firstOp);
                 } catch (Exception ex) {
-                    System.out.println(printErrorMessage());
+                    System.out.println(getErrorMessage());
                 }
-                int vtoroeInt = 0;
+                int secondNumber = 0;
                 try {
-                    vtoroeInt = Integer.parseInt(vt);
+                    secondNumber = Integer.parseInt(secondOp);
                 } catch (Exception ex) {
-                    System.out.println(printErrorMessage());
+                    System.out.println(getErrorMessage());
                 }
-                otchet += "Argument 1 " + convertToString(pervoeInt, schis) + "\n";
-                otchet += "Argument 2 " + convertToString(vtoroeInt, schis) + "\n";
-                int itogo = pervoeInt * vtoroeInt;
-                otchet += "Rezultat " + convertToString(itogo, schis) + "\n";
-                System.out.println(itogo);
+                report += "Argument 1 " + convert(firstNumber, scale) + "\n";
+                report += "Argument 2 " + convert(secondNumber, scale) + "\n";
+                int result = firstNumber * secondNumber;
+                report += "Rezultat " + convert(result, scale) + "\n";
+                System.out.println(result);
                 try {
-                    otchet += "Zakonchili rabotu\n";
-                    if (con) {
-                        System.out.println(otchet);
+                    report += "Zakonchili rabotu\n";
+                    if (isConsole) {
+                        System.out.println(report);
                     } else {
-                        FileWriter w = new FileWriter("d:\\test.txt");
-                        BufferedWriter out = new BufferedWriter(w);
-                        out.write(otchet);
+                        FileWriter writer = new FileWriter("d:\\test.txt");
+                        BufferedWriter out = new BufferedWriter(writer);
+                        out.write(report);
                         out.close();
                     }
                 } catch (Exception e) {
-                    System.out.println(printErrorMessage());
+                    System.out.println(getErrorMessage());
                     return -1;
                 }
 
@@ -177,48 +177,48 @@ public class MainClass {
 
     }
 
-    private static String convertToScale(int znach, String schis) {
-        switch (schis) {
+    private static String convertToScale(int value, String scale) {
+        switch (scale) {
             case "2":
-                String rez = Integer.toBinaryString(znach);
-                return rez;
+                String result = Integer.toBinaryString(value);
+                return result;
             case "8":
-                String rez2 = Integer.toOctalString(znach);
-                return rez2;
+                String result2 = Integer.toOctalString(value);
+                return result2;
             case "16":
-                String rez3 = Integer.toHexString(znach);
-                return rez3;
+                String result3 = Integer.toHexString(value);
+                return result3;
             default:
-                String rez4 = "" + znach;
-                return rez4;
+                String result4 = "" + value;
+                return result4;
         }
     }
 
-    private static String convertToString(int data, String schis) {
-        int sc = 10;
+    private static String convert(int data, String schis) {
+        int defaultScale = 10;
         try {
-            sc = Integer.parseInt(schis);
+            defaultScale = Integer.parseInt(schis);
         } catch (NumberFormatException iskl) {
 
         }
 
-        String rez = Integer.toString(data, sc);
-        return rez;
+        String result = Integer.toString(data, defaultScale);
+        return result;
     }
 
-    private static String printErrorMessage() {
+    private static String getErrorMessage() {
         return "Oshibka";
     }
 }
 
 //class OtchetTools {
 //	public static void zapusk() {
-//		String otchet = MainClass.otchet;
-//		System.out.println(otchet);
+//		String report = MainClass.report;
+//		System.out.println(report);
 //	}
 //	
 //	public static void main(String[] argumenty) {
-//		OtchetTools otchet = new OtchetTools();
-//		otchet.zapusk();
+//		OtchetTools report = new OtchetTools();
+//		report.zapusk();
 //	}
 //}

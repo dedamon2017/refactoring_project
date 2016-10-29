@@ -1,6 +1,7 @@
 package it.discovery.refactoring;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -9,16 +10,22 @@ import org.junit.Test;
 public class Scanner_Test {
 
 
+
+    @Before
+    public void init() {
+        CalculationScanner.init();
+    }
+
     @Test
     public void executeScannerInitMethod() {
 
-        Skkaner_.init();
+        CalculationScanner.init();
     }
 
     @Test
     public void executeMainMethod() {
         try {
-            Skkaner_.readFromFile();
+            CalculationScanner.scan();
         } catch (Exception e) {
             Assert.fail(e.getMessage());
         }
@@ -27,7 +34,7 @@ public class Scanner_Test {
     @Test
     public void executeMainClassMethod() {
         try {
-            Skkaner_.main(new String[]{""});
+            CalculationScanner.main(new String[]{""});
         } catch (Exception e) {
             Assert.fail(e.getMessage());
         }
