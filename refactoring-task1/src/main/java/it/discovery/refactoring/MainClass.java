@@ -34,7 +34,7 @@ public class MainClass {
             konsol = "false";
         }
 
-        work(operaciya, pervoe, vtoroe, schis, konsol, "");
+        calculateOperation(operaciya, pervoe, vtoroe, schis, konsol, "");
     }
 
     /**
@@ -42,7 +42,7 @@ public class MainClass {
      *
      * @param argumenty
      */
-    public static int work(String oper, String per, String vt, String schis, String kon, String temp) {
+    public static int calculateOperation(String oper, String per, String vt, String schis, String kon, String temp) {
         otchet = "";
         otchet = "";
         otchet += "Nachali rabotu\n";
@@ -73,10 +73,10 @@ public class MainClass {
                     System.out.println("Oshibka");
                 }
 
-                otchet += "Argument 1 " + preobraz(pervoeInt, schis) + "\n";
-                otchet += "Argument 2 " + preobraz(vtoroeInt, schis) + "\n";
+                otchet += "Argument 1 " + convertToScale(pervoeInt, schis) + "\n";
+                otchet += "Argument 2 " + convertToScale(vtoroeInt, schis) + "\n";
                 int summa = pervoeInt + vtoroeInt;
-                otchet += "Rezultat " + preobraz(summa, schis) + "\n";
+                otchet += "Rezultat " + convertToScale(summa, schis) + "\n";
                 System.out.println(summa);
                 try {
                     otchet += "Zakonchili rabotu\n";
@@ -109,13 +109,13 @@ public class MainClass {
                 try {
                     vtoroeInt = Integer.parseInt(vt);
                 } catch (Exception ex) {
-                    System.out.println(oshib());
+                    System.out.println(printErrorMessage());
                 }
 
-                otchet += "Argument 1 " + preobraz(pervoeInt, schis) + "\n";
-                otchet += "Argument 2 " + preobraz(vtoroeInt, schis) + "\n";
+                otchet += "Argument 1 " + convertToScale(pervoeInt, schis) + "\n";
+                otchet += "Argument 2 " + convertToScale(vtoroeInt, schis) + "\n";
                 pervoeInt -= vtoroeInt;
-                otchet += "Rezultat " + preobraz(pervoeInt, schis) + "\n";
+                otchet += "Rezultat " + convertToScale(pervoeInt, schis) + "\n";
                 System.out.println(pervoeInt);
                 try {
                     otchet += "Zakonchili rabotu\n";
@@ -129,7 +129,7 @@ public class MainClass {
                     }
 
                 } catch (Exception e) {
-                    System.out.println(oshib());
+                    System.out.println(printErrorMessage());
                     return -1;
                 }
             }
@@ -141,18 +141,18 @@ public class MainClass {
                 try {
                     pervoeInt = Integer.parseInt(per);
                 } catch (Exception ex) {
-                    System.out.println(oshib());
+                    System.out.println(printErrorMessage());
                 }
                 int vtoroeInt = 0;
                 try {
                     vtoroeInt = Integer.parseInt(vt);
                 } catch (Exception ex) {
-                    System.out.println(oshib());
+                    System.out.println(printErrorMessage());
                 }
-                otchet += "Argument 1 " + konvert(pervoeInt, schis) + "\n";
-                otchet += "Argument 2 " + konvert(vtoroeInt, schis) + "\n";
+                otchet += "Argument 1 " + convertToString(pervoeInt, schis) + "\n";
+                otchet += "Argument 2 " + convertToString(vtoroeInt, schis) + "\n";
                 int itogo = pervoeInt * vtoroeInt;
-                otchet += "Rezultat " + konvert(itogo, schis) + "\n";
+                otchet += "Rezultat " + convertToString(itogo, schis) + "\n";
                 System.out.println(itogo);
                 try {
                     otchet += "Zakonchili rabotu\n";
@@ -165,7 +165,7 @@ public class MainClass {
                         out.close();
                     }
                 } catch (Exception e) {
-                    System.out.println(oshib());
+                    System.out.println(printErrorMessage());
                     return -1;
                 }
 
@@ -177,7 +177,7 @@ public class MainClass {
 
     }
 
-    private static String preobraz(int znach, String schis) {
+    private static String convertToScale(int znach, String schis) {
         switch (schis) {
             case "2":
                 String rez = Integer.toBinaryString(znach);
@@ -194,7 +194,7 @@ public class MainClass {
         }
     }
 
-    private static String konvert(int data, String schis) {
+    private static String convertToString(int data, String schis) {
         int sc = 10;
         try {
             sc = Integer.parseInt(schis);
@@ -206,7 +206,7 @@ public class MainClass {
         return rez;
     }
 
-    private static String oshib() {
+    private static String printErrorMessage() {
         return "Oshibka";
     }
 }

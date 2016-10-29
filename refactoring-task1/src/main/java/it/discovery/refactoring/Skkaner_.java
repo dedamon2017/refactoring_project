@@ -15,7 +15,7 @@ public class Skkaner_ {
 		data = new Data_();
 	}
 
-	public static Object $main_() throws Exception {
+	public static Object readFromFile() throws Exception {
 		String p = Konstants.PAPKA_PO_UMOLCHANIYU;
 		
 		try {
@@ -112,7 +112,7 @@ class SkkanerWrapper {
 	
 	public Object $main_() throws Exception {
 		skkaner_.init();
-		return skkaner_.$main_();
+		return skkaner_.readFromFile();
 	}
 }
 
