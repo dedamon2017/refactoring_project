@@ -6,7 +6,7 @@ import java.io.FileWriter;
 /**
  * Calculation unit that implements arithmetic operations
  */
-public class MainClass {
+public class Calculator {
     public static String report = null;
 
     // Primer ispolzovaniya: zapustit is IDE s argumentami
@@ -65,12 +65,14 @@ public class MainClass {
                     firstNumber = Integer.parseInt(firstOp);
                 } catch (Exception ex) {
                     System.out.println("Oshibka");
+                    return  -1;
                 }
                 int secondNumber = 0;
                 try {
                     secondNumber = Integer.parseInt(secondOp);
                 } catch (Exception ex) {
                     System.out.println("Oshibka");
+                    return  -1;
                 }
 
                 report += "Argument 1 " + convertToScale(firstNumber, scale) + "\n";
@@ -104,6 +106,7 @@ public class MainClass {
                     firstNumber = Integer.parseInt(firstOp);
                 } catch (Exception ex) {
                     System.out.println("Oshibka");
+                    return  -1;
                 }
                 int secondNumber = 0;
                 try {
@@ -213,10 +216,10 @@ public class MainClass {
 
 //class OtchetTools {
 //	public static void zapusk() {
-//		String report = MainClass.report;
+//		String report = Calculator.report;
 //		System.out.println(report);
 //	}
-//	
+//
 //	public static void main(String[] argumenty) {
 //		OtchetTools report = new OtchetTools();
 //		report.zapusk();
