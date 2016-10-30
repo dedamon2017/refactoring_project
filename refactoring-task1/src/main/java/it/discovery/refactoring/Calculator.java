@@ -1,5 +1,6 @@
 package it.discovery.refactoring;
 
+import java.awt.image.AreaAveragingScaleFilter;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -18,22 +19,17 @@ public class Calculator {
 	// 4) sistema schisleniya - 2, 8, 10 ili 16 (opcionalno, default 10)
 	// 5) vyvod v konsol(false) ili file(true) (opcionalno)
 	// naprimer, + 2 2 true
-	public static void main(String[] argumenty) {
-		String operation = argumenty[0];
-		String firstOp = argumenty[1];
-		String secondOp = argumenty[2];
-		String scale = null;
-		try {
-			scale = argumenty[3];
-		} catch (ArrayIndexOutOfBoundsException e) {
-			scale = "10";
+	public static void main(String[] args) {
+		String operation = args[0];
+		String firstOp = args[1];
+		String secondOp = args[2];
+		String scale = "10";
+		if (args.length > 3) {
+			scale = args[3];
 		}
-
-		String toConsole = null;
-		try {
-			toConsole = argumenty[4];
-		} catch (ArrayIndexOutOfBoundsException iskl) {
-			toConsole = "false";
+		String toConsole = "false";
+		if (args.length > 4) {
+			toConsole = args[4];
 		}
 
 		calculate(new Operation(operation, firstOp, secondOp, scale, toConsole));

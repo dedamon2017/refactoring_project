@@ -132,11 +132,16 @@ public class CalculatorTest {
 
     @Test(expected = RuntimeException.class)
     //Given_When_Then
-    public void calculate_SumArgumentNonNumber_Error() {
+    public void calculate_SumFirstArgumentNonNumber_Error() {
         Calculator.calculate(new Operation("+", "aaa", "2", "10", "true"));
         
     }
-
+    @Test(expected = RuntimeException.class)
+    //Given_When_Then
+    public void calculate_SumSecondArgumentNonNumber_Error() {
+        Calculator.calculate(new Operation("+", "2", "bb", "10", "true"));
+        
+    }
 
 
     @Test
