@@ -36,18 +36,18 @@ public class Calculator {
 			toConsole = "false";
 		}
 
-		calculate(operation, firstOp, secondOp, scale, toConsole);
+		calculate(new Operation(operation, firstOp, secondOp, scale, toConsole));
 	}
 
 	/**
 	 * Glavnaya function
-	 *
+	 * @param operation TODO
 	 * @param argumenty
 	 */
-	public static int calculate(String operation, String firstOp, String secondOp, String scale, String console) {
+	public static int calculate(Operation operation) {
 		String report = "";
 		try {
-		report = calculateReport(operation, firstOp, secondOp, scale, console);
+		report = calculateReport(operation);
 		} catch (Exception e) {
 			System.out.println(ERROR_MESSAGE);
 			return -1;
@@ -57,9 +57,13 @@ public class Calculator {
 
 	}
 
-	public static String calculateReport(String operation, String firstOp, String secondOp, String scale,
-			String console) throws IOException {
-		String report;
+	public static String calculateReport(Operation calcOperation) throws IOException {
+		String operation = calcOperation.operation;
+		String firstOp = calcOperation.firstOp;
+		String secondOp = calcOperation.secondOp;
+		String scale = calcOperation.scale;
+		String console = calcOperation.console;
+		String report = calcOperation.console;
 		report = "";
 		report = "";
 		report += "Nachali rabotu\n";
