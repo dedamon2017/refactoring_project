@@ -8,6 +8,7 @@ import java.io.IOException;
  * Calculation unit that implements arithmetic operations
  */
 public class Calculator {
+    private static final String ERROR_MESSAGE = "Oshibka";
     public static String report = null;
 
     // Primer ispolzovaniya: zapustit is IDE s argumentami
@@ -115,7 +116,7 @@ public class Calculator {
                 try {
                     secondNumber = Integer.parseInt(secondOp);
                 } catch (Exception ex) {
-                    System.out.println(getErrorMessage());
+                    System.out.println(ERROR_MESSAGE);
                 }
 
                 report += "Argument 1 " + convertToScale(firstNumber, scale) + "\n";
@@ -132,7 +133,7 @@ public class Calculator {
                     }
 
                 } catch (Exception e) {
-                    System.out.println(getErrorMessage());
+                    System.out.println(ERROR_MESSAGE);
                     return -1;
                 }
             }
@@ -144,13 +145,13 @@ public class Calculator {
                 try {
                     firstNumber = Integer.parseInt(firstOp);
                 } catch (Exception ex) {
-                    System.out.println(getErrorMessage());
+                    System.out.println(ERROR_MESSAGE);
                 }
                 int secondNumber = 0;
                 try {
                     secondNumber = Integer.parseInt(secondOp);
                 } catch (Exception ex) {
-                    System.out.println(getErrorMessage());
+                    System.out.println(ERROR_MESSAGE);
                 }
                 report += "Argument 1 " + convert(firstNumber, scale) + "\n";
                 report += "Argument 2 " + convert(secondNumber, scale) + "\n";
@@ -165,7 +166,7 @@ public class Calculator {
                         saveToFile();
                     }
                 } catch (Exception e) {
-                    System.out.println(getErrorMessage());
+                    System.out.println(ERROR_MESSAGE);
                     return -1;
                 }
 
@@ -209,9 +210,6 @@ public class Calculator {
         return Integer.toString(data, defaultScale);
     }
 
-    private static String getErrorMessage() {
-        return "Oshibka";
-    }
 }
 
 //class OtchetTools {
