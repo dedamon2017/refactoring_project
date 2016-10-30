@@ -45,6 +45,21 @@ public class Calculator {
 	 * @param argumenty
 	 */
 	public static int calculate(String operation, String firstOp, String secondOp, String scale, String console) {
+		String report = "";
+		try {
+		report = calculateReport(operation, firstOp, secondOp, scale, console);
+		} catch (Exception e) {
+			System.out.println(ERROR_MESSAGE);
+			return -1;
+		}
+		Calculator.report = report;
+		return 0;
+
+	}
+
+	public static String calculateReport(String operation, String firstOp, String secondOp, String scale,
+			String console) throws IOException {
+		String report;
 		report = "";
 		report = "";
 		report += "Nachali rabotu\n";
@@ -55,7 +70,7 @@ public class Calculator {
 		// }
 
 		boolean isConsole = isConsole(console);
-		try {
+		
 			switch (operation) {
 			case "+": {
 				report += "Operaciya slojit\n";
@@ -67,18 +82,14 @@ public class Calculator {
 				int result = firstNumber + secondNumber;
 				report += "Rezultat " + convertToScale(result, scale) + "\n";
 				System.out.println(result);
-				try {
-					report += "Zakonchili rabotu\n";
-					if (isConsole) {
-						System.out.println(report);
-					} else {
-						saveToFile(report);
-					}
 
-				} catch (Exception e) {
-					System.out.println("Oshibka");
-					return -1;
+				report += "Zakonchili rabotu\n";
+				if (isConsole) {
+					System.out.println(report);
+				} else {
+					saveToFile(report);
 				}
+
 			}
 
 				break;
@@ -93,18 +104,14 @@ public class Calculator {
 				int result = firstNumber - secondNumber;
 				report += "Rezultat " + convertToScale(result, scale) + "\n";
 				System.out.println(result);
-				try {
-					report += "Zakonchili rabotu\n";
-					if (isConsole) {
-						System.out.println(report);
-					} else {
-						saveToFile(report);
-					}
 
-				} catch (Exception e) {
-					System.out.println(ERROR_MESSAGE);
-					return -1;
+				report += "Zakonchili rabotu\n";
+				if (isConsole) {
+					System.out.println(report);
+				} else {
+					saveToFile(report);
 				}
+
 			}
 
 				break;
@@ -117,27 +124,19 @@ public class Calculator {
 				int result = firstNumber * secondNumber;
 				report += "Rezultat " + convert(result, scale) + "\n";
 				System.out.println(result);
-				try {
-					report += "Zakonchili rabotu\n";
-					if (isConsole) {
-						System.out.println(report);
-					} else {
-						saveToFile(report);
-					}
-				} catch (Exception e) {
-					System.out.println(ERROR_MESSAGE);
-					return -1;
+
+				report += "Zakonchili rabotu\n";
+				if (isConsole) {
+					System.out.println(report);
+				} else {
+					saveToFile(report);
 				}
 
 			}
 
 				break;
 			}
-		} catch (Exception e) {
-			return -1;
-		}
-		return 0;
-
+		return report;
 	}
 
 	private static int toInt(String text) {

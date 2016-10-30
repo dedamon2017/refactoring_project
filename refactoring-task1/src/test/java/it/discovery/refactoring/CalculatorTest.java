@@ -3,10 +3,11 @@ package it.discovery.refactoring;
 
 import org.junit.Test;
 
+import static org.junit.Assert.*;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-
-import static org.junit.Assert.assertEquals;
+import java.io.IOException;
 
 public class CalculatorTest {
 
@@ -37,6 +38,24 @@ public class CalculatorTest {
         assertEquals(result, 0);
     }
 
+    @Test
+    //Given_When_Then
+    public void calculateReport_SumWithDecimalScaleAndConsoleOutput_Success() {
+        try {
+			String report = Calculator.calculateReport("+", "2", "3", "10", "true");
+			assertEquals(report, "Nachali rabotu\n" +
+	                "Operaciya slojit\n" +
+	                "Argument 1 2\n" +
+	                "Argument 2 3\n" +
+	                "Rezultat 5\n" +
+	                "Zakonchili rabotu\n");
+		} catch (IOException e) {
+			fail(e.getMessage());
+		}
+        
+       
+    }
+    
     @Test
     //Given_When_Then
     public void calculate_DecreaseWithDecimalScaleAndConsoleOutput_Success() {
