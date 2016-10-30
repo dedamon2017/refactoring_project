@@ -42,6 +42,7 @@ public class CalculatorTest {
         firstArgument = "2";
         secondArgument = "3";
         Calculator.main(new String[]{operation, firstArgument, secondArgument});
+
     }
 
     @Test

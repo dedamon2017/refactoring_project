@@ -2,6 +2,7 @@ package it.discovery.refactoring;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  * Calculation unit that implements arithmetic operations
@@ -85,10 +86,7 @@ public class Calculator {
                     if (isConsole) {
                         System.out.println(report);
                     } else {
-                        FileWriter writer = new FileWriter("d:\\test.txt");
-                        BufferedWriter out = new BufferedWriter(writer);
-                        out.write(report);
-                        out.close();
+                        saveToFile();
                     }
 
                 } catch (Exception e) {
@@ -96,7 +94,7 @@ public class Calculator {
                     return -1;
                 }
             }
-            ;
+
             break;
 
             case "-": {
@@ -125,10 +123,7 @@ public class Calculator {
                     if (isConsole) {
                         System.out.println(report);
                     } else {
-                        FileWriter writer = new FileWriter("d:\\test.txt");
-                        BufferedWriter out = new BufferedWriter(writer);
-                        out.write(report);
-                        out.close();
+                        saveToFile();
                     }
 
                 } catch (Exception e) {
@@ -136,7 +131,7 @@ public class Calculator {
                     return -1;
                 }
             }
-            ;
+
             break;
             case "*": {
                 report += "Operaciya umnojeniya\n";
@@ -162,10 +157,7 @@ public class Calculator {
                     if (isConsole) {
                         System.out.println(report);
                     } else {
-                        FileWriter writer = new FileWriter("d:\\test.txt");
-                        BufferedWriter out = new BufferedWriter(writer);
-                        out.write(report);
-                        out.close();
+                        saveToFile();
                     }
                 } catch (Exception e) {
                     System.out.println(getErrorMessage());
@@ -173,11 +165,18 @@ public class Calculator {
                 }
 
             }
-            ;
+
             break;
         }
         return 0;
 
+    }
+
+    private static void saveToFile() throws IOException {
+        FileWriter writer = new FileWriter("d:\\test.txt");
+        BufferedWriter out = new BufferedWriter(writer);
+        out.write(report);
+        out.close();
     }
 
     private static String convertToScale(int value, String scale) {
