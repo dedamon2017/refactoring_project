@@ -93,16 +93,22 @@ class ScanResult {
 	
 	public String report;
 	
+	private void printInfo(String content) {
+		System.out.println(content);
+	}
+	
 	public void printLineCount() {
-		System.out.println("Data::Chislo linij " + lineCount.lineCount);
+		printInfo("Data::Chislo linij " + lineCount.lineCount);
 	}
 	
 	public void printLines() {
-		System.out.println(constants.HEADER_LINES + lines);
+		
+		printInfo(constants.HEADER_LINES + lines);
 	}
 
 	public void printReport() {
-		System.out.println("Data::Tekst " + report);
+	
+		printInfo("Data::Tekst " + report);
 	}
 	
 }
