@@ -52,17 +52,10 @@ public class Calculator {
 //		boolean probel = operaciya.equals("");
 //		if (probel) {
 //			operaciya = "+";
-//		}		
+//		}
 
-        boolean isConsole = console != null && console.equals("true");
-       /* if (console != null && console.equals("true")) {
-            isConsole = true;
-        }*/
 
-        /*boolean isConsole = false;
-        if (console != null && console.equals("true")) {
-            isConsole = true;
-        }*/
+        boolean isConsole = isConsole(console);
 
         switch (operation) {
             case "+": {
@@ -176,6 +169,14 @@ public class Calculator {
         }
         return 0;
 
+    }
+
+    private static boolean isConsole(String console) {
+        boolean isConsole = false;
+        if (console != null && console.equals("true")) {
+            isConsole = true;
+        }
+        return isConsole;
     }
 
     private static void saveToFile() throws IOException {
