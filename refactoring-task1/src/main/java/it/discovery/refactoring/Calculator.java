@@ -31,7 +31,6 @@ public class Calculator {
 		if (args.length > 4) {
 			toConsole = args[4];
 		}
-
 		calculate(new Operation(operation, firstOp, secondOp, scale, toConsole));
 	}
 
@@ -77,10 +76,10 @@ public class Calculator {
 				int firstNumber = toInt(firstOp);
 				int secondNumber = toInt(secondOp);
 
-				report += "Argument 1 " + convertToScale(firstNumber, scale) + "\n";
-				report += "Argument 2 " + convertToScale(secondNumber, scale) + "\n";
+				report += "Argument 1 " + convert(firstNumber, scale) + "\n";
+				report += "Argument 2 " + convert(secondNumber, scale) + "\n";
 				int result = firstNumber + secondNumber;
-				report += "Rezultat " + convertToScale(result, scale) + "\n";
+				report += "Rezultat " + convert(result, scale) + "\n";
 				System.out.println(result);
 
 				report += "Zakonchili rabotu\n";
@@ -99,10 +98,10 @@ public class Calculator {
 				int firstNumber = toInt(firstOp);
 				int secondNumber = toInt(secondOp);
 
-				report += "Argument 1 " + convertToScale(firstNumber, scale) + "\n";
-				report += "Argument 2 " + convertToScale(secondNumber, scale) + "\n";
+				report += "Argument 1 " + convert(firstNumber, scale) + "\n";
+				report += "Argument 2 " + convert(secondNumber, scale) + "\n";
 				int result = firstNumber - secondNumber;
-				report += "Rezultat " + convertToScale(result, scale) + "\n";
+				report += "Rezultat " + convert(result, scale) + "\n";
 				System.out.println(result);
 
 				report += "Zakonchili rabotu\n";
@@ -164,7 +163,7 @@ public class Calculator {
 		out.close();
 	}
 
-	private static String convertToScale(int value, String scale) {
+/*	private static String convertToScale(int value, String scale) {
 		switch (scale) {
 		case "2":
 			return Integer.toBinaryString(value);
@@ -175,7 +174,7 @@ public class Calculator {
 		default:
 			return "" + value;
 		}
-	}
+	}*/
 
 	private static String convert(int data, String schis) {
 		int defaultScale = 10;
