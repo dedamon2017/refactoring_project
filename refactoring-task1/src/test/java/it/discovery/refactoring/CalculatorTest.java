@@ -27,7 +27,7 @@ public class CalculatorTest {
     @Test
     //Given_When_Then
     public void calculate_SumWithDecimalScaleAndConsoleOutput_Success() {
-        int result = Calculator.calculate("+", "2", "3", "10", "true", "");
+        int result = Calculator.calculate("+", "2", "3", "10", "true");
         assertEquals(Calculator.report, "Nachali rabotu\n" +
                 "Operaciya slojit\n" +
                 "Argument 1 2\n" +
@@ -39,7 +39,7 @@ public class CalculatorTest {
 
     @Test
     public void calculate_SumWithBinaryScaleAndConsoleOutput_Success() {
-        int result = Calculator.calculate("+", "1", "5", "2", "true", "");
+        int result = Calculator.calculate("+", "1", "5", "2", "true");
         assertEquals(Calculator.report,
                 "Nachali rabotu\n" +
                 "Operaciya slojit\n" +
@@ -52,7 +52,7 @@ public class CalculatorTest {
 
     @Test
     public void calculate_SumWithOctalScaleAndConsoleOutput_Success() {
-        int result = Calculator.calculate("+", "2", "8", "8", "true", "");
+        int result = Calculator.calculate("+", "2", "8", "8", "true");
         assertEquals(Calculator.report,
                 "Nachali rabotu\n" +
                         "Operaciya slojit\n" +
@@ -65,7 +65,7 @@ public class CalculatorTest {
 
     @Test
     public void calculate_SumWithHexScaleAndConsoleOutput_Success() {
-        int result = Calculator.calculate("+", "5", "12", "16", "true", "");
+        int result = Calculator.calculate("+", "5", "12", "16", "true");
         assertEquals(Calculator.report,
                 "Nachali rabotu\n" +
                         "Operaciya slojit\n" +
@@ -79,7 +79,7 @@ public class CalculatorTest {
     @Test
     //Given_When_Then
     public void calculate_MultiplyWithDecimalScaleAndConsoleOutput_Success() {
-        int result = Calculator.calculate("*", "2", "3", "10", "true", "");
+        int result = Calculator.calculate("*", "2", "3", "10", "true");
         assertEquals(Calculator.report, "Nachali rabotu\n" + "Operaciya umnojeniya\n" +
                 "Argument 1 2\n" + "Argument 2 3\n" + "Rezultat 6\n" + "Zakonchili rabotu\n");
         assertEquals(result, 0);
@@ -88,7 +88,7 @@ public class CalculatorTest {
     @Test
     //Given_When_Then
     public void calculate_SumArgumentNonNumber_Error() {
-        int result = Calculator.calculate("+", "aaa", "2", "10", "true", "");
+        int result = Calculator.calculate("+", "aaa", "2", "10", "true");
         assertEquals(result, -1);
     }
 
