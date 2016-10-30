@@ -72,7 +72,7 @@ public class Calculator {
 					if (isConsole) {
 						System.out.println(report);
 					} else {
-						saveToFile();
+						saveToFile(report);
 					}
 
 				} catch (Exception e) {
@@ -98,7 +98,7 @@ public class Calculator {
 					if (isConsole) {
 						System.out.println(report);
 					} else {
-						saveToFile();
+						saveToFile(report);
 					}
 
 				} catch (Exception e) {
@@ -122,7 +122,7 @@ public class Calculator {
 					if (isConsole) {
 						System.out.println(report);
 					} else {
-						saveToFile();
+						saveToFile(report);
 					}
 				} catch (Exception e) {
 					System.out.println(ERROR_MESSAGE);
@@ -158,10 +158,10 @@ public class Calculator {
 		return isConsole;
 	}
 
-	private static void saveToFile() throws IOException {
+	private static void saveToFile(String content) throws IOException {
 		FileWriter writer = new FileWriter("d:\\test.txt");
 		BufferedWriter out = new BufferedWriter(writer);
-		out.write(report);
+		out.write(content);
 		out.close();
 	}
 
