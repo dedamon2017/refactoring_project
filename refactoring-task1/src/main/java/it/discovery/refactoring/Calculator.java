@@ -53,12 +53,12 @@ public class Calculator {
 	}
 
 	public static String calculateReport(Operation calcOperation) throws IOException {
-		String operation = calcOperation.operation;
-		String firstOp = calcOperation.firstOp;
-		String secondOp = calcOperation.secondOp;
-		String scale = calcOperation.scale;
-		String console = calcOperation.console;
-		String report = calcOperation.console;
+		String operation = calcOperation.getOperation();
+		String firstOp = calcOperation.getFirstOp();
+		String secondOp = calcOperation.getSecondOp();
+		String scale = calcOperation.getScale();
+		String console = calcOperation.getConsole();
+		String report = calcOperation.getConsole();
 		
 		report += "Nachali rabotu\n";
 		// String operaciya = argumenty[10];

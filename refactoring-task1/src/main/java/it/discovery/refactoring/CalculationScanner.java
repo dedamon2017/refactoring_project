@@ -14,22 +14,17 @@ public class CalculationScanner {
 	
 	public static ScanResult scanResult;
 	
-	public static void init() {
-		scanResult = new ScanResult();
-	}
-
+	
 	public static Object scan() throws Exception {
+		ScanResult scanResult = null;
 		String defaultPath = constants.DEFAULT_SCAN_FOLDER;
 		
 		try {
 			List<String> lines = Files.readAllLines(Paths.get(defaultPath));
 			report = lines.toString();
+			scanResult = new ScanResult(new LineContainer(lines.size()), new Vector(lines), report);
 			
 			
-			scanResult.lineCount = new LineContainer();
-			scanResult.lineCount.lineCount = lines.size();
-			scanResult.lines = new Vector(lines);
-			scanResult.report = report;
 			
 		} catch (FileNotFoundException e) {
 			System.out.println("Oshibka!");
@@ -58,47 +53,95 @@ public class CalculationScanner {
 }
 
 class BaseLineContainer {
-	public int lineCount;
+	private int lineCount;
 	
+	
+	public BaseLineContainer(int lineCount) {
+		this.lineCount = lineCount;
+	}
+
 	public BaseLineContainer() {
 		if(!(this instanceof LineContainer)) {
 			System.out.println("Error!");
 		}
 	}
+
+	public int getLineCount() {
+		return lineCount;
+	}
+
+	
 }
 
 class LineContainer extends BaseLineContainer {
+
+	public LineContainer(int lineCount) {
+		super(lineCount);
+		
+	}
 	
 }
 
 class FutureLineContainer extends LineContainer {
+
+	public FutureLineContainer(int lineCount) {
+		super(lineCount);
+		
+	}
 	
 }
 
 class ScanResult {
-	public BaseLineContainer lineCount;
+	private BaseLineContainer lineCount;
 	
-	public Vector lines;
+	private Vector lines;
 	
-	public String report;
+	private String report;
 	
+	
+	
+	public ScanResult(BaseLineContainer lineCount, Vector lines, String report) {
+		
+		this.lineCount = lineCount;
+		this.lines = lines;
+		this.report = report;
+	}
+
 	private void printInfo(String content) {
 		System.out.println(content);
 	}
 	
 	public void printLineCount() {
-		printInfo("Data::Chislo linij " + lineCount.lineCount);
+		printInfo("Data::Chislo linij " + getLineCount().getLineCount());
 	}
 	
 	public void printLines() {
 		
-		printInfo(constants.HEADER_LINES + lines);
+		printInfo(constants.HEADER_LINES + getLines());
 	}
 
 	public void printReport() {
 	
-		printInfo("Data::Tekst " + report);
+		printInfo("Data::Tekst " + getReport());
 	}
+
+	public BaseLineContainer getLineCount() {
+		return lineCount;
+	}
+
+	
+
+	public Vector getLines() {
+		return lines;
+	}
+
+	
+
+	public String getReport() {
+		return report;
+	}
+
+	
 	
 }
 
@@ -106,7 +149,6 @@ class ScannerWrapper {
 	public CalculationScanner scanner;
 	
 	public Object scan() throws Exception {
-		scanner.init();
 		return scanner.scan();
 	}
 }
