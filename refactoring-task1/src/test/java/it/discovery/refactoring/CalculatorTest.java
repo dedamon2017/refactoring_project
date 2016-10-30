@@ -40,6 +40,19 @@ public class CalculatorTest {
 
     @Test
     //Given_When_Then
+    public void calculate_SumWithDecimalScaleAndFileOutput_Success() {
+        int result = Calculator.calculate(new Operation("+", "2", "3", "10", "false"));
+        assertEquals(Calculator.report, "Nachali rabotu\n" +
+                "Operaciya slojit\n" +
+                "Argument 1 2\n" +
+                "Argument 2 3\n" +
+                "Rezultat 5\n" +
+                "Zakonchili rabotu\n");
+        assertEquals(result, 0);
+    }
+    
+    @Test
+    //Given_When_Then
     public void calculateReport_SumWithDecimalScaleAndConsoleOutput_Success() {
         try {
 			String report = Calculator.calculateReport(new Operation("+", "2", "3", "10", "true"));
