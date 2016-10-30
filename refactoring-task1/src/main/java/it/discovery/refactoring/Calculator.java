@@ -67,18 +67,18 @@ public class Calculator {
 		// operaciya = "+";
 		// }
 
-		boolean isConsole = isConsole(console);
+		boolean isConsole = TextUtils.isConsole(console);
 		
 			switch (operation) {
 			case "+": {
 				report += "Operaciya slojit\n";
-				int firstNumber = toInt(firstOp);
-				int secondNumber = toInt(secondOp);
+				int firstNumber = TextUtils.toInt(firstOp);
+				int secondNumber = TextUtils.toInt(secondOp);
 
-				report += "Argument 1 " + convert(firstNumber, scale) + "\n";
-				report += "Argument 2 " + convert(secondNumber, scale) + "\n";
+				report += "Argument 1 " + TextUtils.convert(firstNumber, scale) + "\n";
+				report += "Argument 2 " + TextUtils.convert(secondNumber, scale) + "\n";
 				int result = firstNumber + secondNumber;
-				report += "Rezultat " + convert(result, scale) + "\n";
+				report += "Rezultat " + TextUtils.convert(result, scale) + "\n";
 				System.out.println(result);
 
 				report += "Zakonchili rabotu\n";
@@ -94,13 +94,13 @@ public class Calculator {
 
 			case "-": {
 				report += "Operaciya vychitanie\n";
-				int firstNumber = toInt(firstOp);
-				int secondNumber = toInt(secondOp);
+				int firstNumber = TextUtils.toInt(firstOp);
+				int secondNumber = TextUtils.toInt(secondOp);
 
-				report += "Argument 1 " + convert(firstNumber, scale) + "\n";
-				report += "Argument 2 " + convert(secondNumber, scale) + "\n";
+				report += "Argument 1 " + TextUtils.convert(firstNumber, scale) + "\n";
+				report += "Argument 2 " + TextUtils.convert(secondNumber, scale) + "\n";
 				int result = firstNumber - secondNumber;
-				report += "Rezultat " + convert(result, scale) + "\n";
+				report += "Rezultat " + TextUtils.convert(result, scale) + "\n";
 				System.out.println(result);
 
 				report += "Zakonchili rabotu\n";
@@ -115,12 +115,12 @@ public class Calculator {
 				break;
 			case "*": {
 				report += "Operaciya umnojeniya\n";
-				int firstNumber = toInt(firstOp);
-				int secondNumber = toInt(secondOp);
-				report += "Argument 1 " + convert(firstNumber, scale) + "\n";
-				report += "Argument 2 " + convert(secondNumber, scale) + "\n";
+				int firstNumber = TextUtils.toInt(firstOp);
+				int secondNumber = TextUtils.toInt(secondOp);
+				report += "Argument 1 " + TextUtils.convert(firstNumber, scale) + "\n";
+				report += "Argument 2 " + TextUtils.convert(secondNumber, scale) + "\n";
 				int result = firstNumber * secondNumber;
-				report += "Rezultat " + convert(result, scale) + "\n";
+				report += "Rezultat " + TextUtils.convert(result, scale) + "\n";
 				System.out.println(result);
 
 				report += "Zakonchili rabotu\n";
@@ -135,24 +135,6 @@ public class Calculator {
 				break;
 			}
 		return report;
-	}
-
-	private static int toInt(String text) {
-		try {
-			return Integer.parseInt(text);
-		} catch (NumberFormatException ex) {
-			System.out.println("Oshibka");
-			throw new RuntimeException(ex);
-		}
-
-	}
-
-	private static boolean isConsole(String console) {
-		boolean isConsole = false;
-		if (console != null && console.equals("true")) {
-			isConsole = true;
-		}
-		return isConsole;
 	}
 
 	private static void saveToFile(String content) throws IOException {
@@ -174,17 +156,6 @@ public class Calculator {
 			return "" + value;
 		}
 	}*/
-
-	private static String convert(int data, String schis) {
-		int defaultScale = 10;
-		try {
-			defaultScale = Integer.parseInt(schis);
-		} catch (NumberFormatException iskl) {
-
-		}
-
-		return Integer.toString(data, defaultScale);
-	}
 
 	public static String getReport() {
 		return report;
