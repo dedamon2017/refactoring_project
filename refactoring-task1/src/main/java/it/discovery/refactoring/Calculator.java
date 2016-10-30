@@ -53,10 +53,15 @@ public class Calculator {
 //			operaciya = "+";
 //		}		
 
-        boolean isConsole = false;
+        boolean isConsole = console != null && console.equals("true");
+       /* if (console != null && console.equals("true")) {
+            isConsole = true;
+        }*/
+
+        /*boolean isConsole = false;
         if (console != null && console.equals("true")) {
             isConsole = true;
-        }
+        }*/
 
         switch (operation) {
             case "+": {
