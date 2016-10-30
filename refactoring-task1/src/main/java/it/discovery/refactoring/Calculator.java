@@ -58,29 +58,15 @@ public class Calculator {
 		String console = calcOperation.getConsole();
 		String report = "Nachali rabotu\n";
 
-		
-
 		boolean isConsole = TextUtils.isConsole(console);
 
 		int firstNumber = TextUtils.toInt(firstOp);
 		int secondNumber = TextUtils.toInt(secondOp);
-
+		int result = 0;
 		switch (operation) {
 		case "+": {
 			report += "Operaciya slojit\n";
-
-			report += "Argument 1 " + TextUtils.convert(firstNumber, scale) + "\n";
-			report += "Argument 2 " + TextUtils.convert(secondNumber, scale) + "\n";
-			int result = firstNumber + secondNumber;
-			report += "Rezultat " + TextUtils.convert(result, scale) + "\n";
-			System.out.println(result);
-
-			report += "Zakonchili rabotu\n";
-			if (isConsole) {
-				System.out.println(report);
-			} else {
-				CalculationReport.saveToFile(report);
-			}
+			result = firstNumber + secondNumber;
 
 		}
 
@@ -88,43 +74,32 @@ public class Calculator {
 
 		case "-": {
 			report += "Operaciya vychitanie\n";
-
-			report += "Argument 1 " + TextUtils.convert(firstNumber, scale) + "\n";
-			report += "Argument 2 " + TextUtils.convert(secondNumber, scale) + "\n";
-			int result = firstNumber - secondNumber;
-			report += "Rezultat " + TextUtils.convert(result, scale) + "\n";
-			System.out.println(result);
-
-			report += "Zakonchili rabotu\n";
-			if (isConsole) {
-				System.out.println(report);
-			} else {
-				CalculationReport.saveToFile(report);
-			}
+			result = firstNumber - secondNumber;
 
 		}
 
 			break;
 		case "*": {
 			report += "Operaciya umnojeniya\n";
-
-			report += "Argument 1 " + TextUtils.convert(firstNumber, scale) + "\n";
-			report += "Argument 2 " + TextUtils.convert(secondNumber, scale) + "\n";
-			int result = firstNumber * secondNumber;
-			report += "Rezultat " + TextUtils.convert(result, scale) + "\n";
-			System.out.println(result);
-
-			report += "Zakonchili rabotu\n";
-			if (isConsole) {
-				System.out.println(report);
-			} else {
-				CalculationReport.saveToFile(report);
-			}
+			result = firstNumber * secondNumber;
 
 		}
 
 			break;
 		}
+		report += "Argument 1 " + TextUtils.convert(firstNumber, scale) + "\n";
+		report += "Argument 2 " + TextUtils.convert(secondNumber, scale) + "\n";
+
+		report += "Rezultat " + TextUtils.convert(result, scale) + "\n";
+		System.out.println(result);
+
+		report += "Zakonchili rabotu\n";
+		if (isConsole) {
+			System.out.println(report);
+		} else {
+			CalculationReport.saveToFile(report);
+		}
+
 		return report;
 	}
 
