@@ -10,7 +10,7 @@ import java.io.IOException;
  */
 public class Calculator {
 	private static final String ERROR_MESSAGE = "Oshibka";
-	public static String report = null;
+	private static String report = null;
 
 	// Primer ispolzovaniya: zapustit is IDE s argumentami
 	// 1) znak operacii
@@ -47,7 +47,7 @@ public class Calculator {
 			System.out.println(ERROR_MESSAGE);
 			throw new RuntimeException();
 		}
-		Calculator.report = report;
+		Calculator.setReport(report);
 		
 
 	}
@@ -59,8 +59,7 @@ public class Calculator {
 		String scale = calcOperation.scale;
 		String console = calcOperation.console;
 		String report = calcOperation.console;
-		report = "";
-		report = "";
+		
 		report += "Nachali rabotu\n";
 		// String operaciya = argumenty[10];
 		// boolean probel = operaciya.equals("");
@@ -185,6 +184,14 @@ public class Calculator {
 		}
 
 		return Integer.toString(data, defaultScale);
+	}
+
+	public static String getReport() {
+		return report;
+	}
+
+	public static void setReport(String report) {
+		Calculator.report = report;
 	}
 
 }
