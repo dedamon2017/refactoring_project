@@ -44,16 +44,16 @@ public class Calculator {
 	 * @param operation TODO
 	 * @param argumenty
 	 */
-	public static int calculate(Operation operation) {
+	public static void calculate(Operation operation) {
 		String report = "";
 		try {
 		report = calculateReport(operation);
 		} catch (Exception e) {
 			System.out.println(ERROR_MESSAGE);
-			return -1;
+			throw new RuntimeException();
 		}
 		Calculator.report = report;
-		return 0;
+		
 
 	}
 
