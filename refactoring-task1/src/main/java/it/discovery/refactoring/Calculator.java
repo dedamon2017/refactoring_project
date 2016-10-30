@@ -71,14 +71,14 @@ public class Calculator {
                     firstNumber = Integer.parseInt(firstOp);
                 } catch (Exception ex) {
                     System.out.println("Oshibka");
-                    return  -1;
+                    return -1;
                 }
                 int secondNumber = 0;
                 try {
                     secondNumber = Integer.parseInt(secondOp);
                 } catch (Exception ex) {
                     System.out.println("Oshibka");
-                    return  -1;
+                    return -1;
                 }
 
                 report += "Argument 1 " + convertToScale(firstNumber, scale) + "\n";
@@ -109,7 +109,7 @@ public class Calculator {
                     firstNumber = Integer.parseInt(firstOp);
                 } catch (Exception ex) {
                     System.out.println("Oshibka");
-                    return  -1;
+                    return -1;
                 }
                 int secondNumber = 0;
                 try {
@@ -187,17 +187,13 @@ public class Calculator {
     private static String convertToScale(int value, String scale) {
         switch (scale) {
             case "2":
-                String result = Integer.toBinaryString(value);
-                return result;
+                return Integer.toBinaryString(value);
             case "8":
-                String result2 = Integer.toOctalString(value);
-                return result2;
+                return Integer.toOctalString(value);
             case "16":
-                String result3 = Integer.toHexString(value);
-                return result3;
+                return Integer.toHexString(value);
             default:
-                String result4 = "" + value;
-                return result4;
+                return "" + value;
         }
     }
 
@@ -209,8 +205,8 @@ public class Calculator {
 
         }
 
-        String result = Integer.toString(data, defaultScale);
-        return result;
+
+        return Integer.toString(data, defaultScale);
     }
 
     private static String getErrorMessage() {
