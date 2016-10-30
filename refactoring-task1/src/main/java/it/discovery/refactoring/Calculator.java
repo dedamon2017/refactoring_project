@@ -83,9 +83,9 @@ public class Calculator {
 
                 report += "Argument 1 " + convertToScale(firstNumber, scale) + "\n";
                 report += "Argument 2 " + convertToScale(secondNumber, scale) + "\n";
-                int sum = firstNumber + secondNumber;
-                report += "Rezultat " + convertToScale(sum, scale) + "\n";
-                System.out.println(sum);
+                int result = firstNumber + secondNumber;
+                report += "Rezultat " + convertToScale(result, scale) + "\n";
+                System.out.println(result);
                 try {
                     report += "Zakonchili rabotu\n";
                     if (isConsole) {
