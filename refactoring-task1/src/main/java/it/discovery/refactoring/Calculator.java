@@ -121,9 +121,9 @@ public class Calculator {
 
                 report += "Argument 1 " + convertToScale(firstNumber, scale) + "\n";
                 report += "Argument 2 " + convertToScale(secondNumber, scale) + "\n";
-                firstNumber -= secondNumber;
-                report += "Rezultat " + convertToScale(firstNumber, scale) + "\n";
-                System.out.println(firstNumber);
+                int result = firstNumber - secondNumber;
+                report += "Rezultat " + convertToScale(result, scale) + "\n";
+                System.out.println(result);
                 try {
                     report += "Zakonchili rabotu\n";
                     if (isConsole) {

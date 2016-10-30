@@ -38,6 +38,19 @@ public class CalculatorTest {
     }
 
     @Test
+    //Given_When_Then
+    public void calculate_DecreaseWithDecimalScaleAndConsoleOutput_Success() {
+        int result = Calculator.calculate("-", "5", "2", "10", "true");
+        assertEquals(Calculator.report, "Nachali rabotu\n" +
+                "Operaciya vychitanie\n" +
+                "Argument 1 5\n" +
+                "Argument 2 2\n" +
+                "Rezultat 3\n" +
+                "Zakonchili rabotu\n");
+        assertEquals(result, 0);
+    }
+
+    @Test
     public void calculate_SumWithBinaryScaleAndConsoleOutput_Success() {
         int result = Calculator.calculate("+", "1", "5", "2", "true");
         assertEquals(Calculator.report,
