@@ -67,24 +67,17 @@ public class Calculator {
 		case "+": {
 			report += "Operaciya slojit\n";
 			result = firstNumber + secondNumber;
-
 		}
-
 			break;
-
 		case "-": {
 			report += "Operaciya vychitanie\n";
 			result = firstNumber - secondNumber;
-
 		}
-
 			break;
 		case "*": {
 			report += "Operaciya umnojeniya\n";
 			result = firstNumber * secondNumber;
-
 		}
-
 			break;
 		}
 		report += "Argument 1 " + TextUtils.convert(firstNumber, scale) + "\n";

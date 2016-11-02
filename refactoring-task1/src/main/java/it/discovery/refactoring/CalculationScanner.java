@@ -21,7 +21,7 @@ public class CalculationScanner {
 		try {
 			List<String> lines = Files.readAllLines(Paths.get(defaultPath));
 			report = lines.toString();
-			scanResult = new ScanResult(new LineContainer(lines.size()), new Vector(lines), report);
+			scanResult = new ScanResult(new Vector(lines), report);
 
 		} catch (FileNotFoundException e) {
 			System.out.println("Oshibka!");
@@ -34,9 +34,8 @@ public class CalculationScanner {
 	}
 
 	public static void main(String[] args) throws Exception {
-		ScannerWrapper wrapper = new ScannerWrapper();
-		wrapper.scanner = new CalculationScanner();
-		Object result = wrapper.scan();
+		
+		Object result = CalculationScanner.scan();
 		try {
 			ScanResult data = (ScanResult) result;
 			data.printLineCount();
@@ -48,53 +47,28 @@ public class CalculationScanner {
 	}
 }
 
-class BaseLineContainer {
-	private int lineCount;
 
-	public BaseLineContainer(int lineCount) {
+
+class LineContainer {
+	private int lineCount;
+	public LineContainer(int lineCount) {
 		this.lineCount = lineCount;
 	}
-
-	public BaseLineContainer() {
-		if (!(this instanceof LineContainer)) {
-			System.out.println("Error!");
-		}
-	}
-
 	public int getLineCount() {
 		return lineCount;
 	}
-
-}
-
-class LineContainer extends BaseLineContainer {
-
-	public LineContainer(int lineCount) {
-		super(lineCount);
-
-	}
-
-}
-
-class FutureLineContainer extends LineContainer {
-
-	public FutureLineContainer(int lineCount) {
-		super(lineCount);
-
-	}
-
 }
 
 class ScanResult {
-	private BaseLineContainer lineCount;
+	private int lineCount;
 
 	private Vector lines;
 
 	private String report;
 
-	public ScanResult(BaseLineContainer lineCount, Vector lines, String report) {
+	public ScanResult(Vector lines, String report) {
 
-		this.lineCount = lineCount;
+		this.lineCount = lines.size();
 		this.lines = lines;
 		this.report = report;
 	}
@@ -104,7 +78,7 @@ class ScanResult {
 	}
 
 	public void printLineCount() {
-		printInfo("Data::Chislo linij " + getLineCount().getLineCount());
+		printInfo("Data::Chislo linij " + getLineCount());
 	}
 
 	public void printLines() {
@@ -117,7 +91,7 @@ class ScanResult {
 		printInfo("Data::Tekst " + getReport());
 	}
 
-	public BaseLineContainer getLineCount() {
+	public int getLineCount() {
 		return lineCount;
 	}
 
@@ -131,13 +105,7 @@ class ScanResult {
 
 }
 
-class ScannerWrapper {
-	public CalculationScanner scanner;
 
-	public Object scan() throws Exception {
-		return scanner.scan();
-	}
-}
 
 interface constants {
 	public static final String HEADER_LINES = "Data::Stroki";

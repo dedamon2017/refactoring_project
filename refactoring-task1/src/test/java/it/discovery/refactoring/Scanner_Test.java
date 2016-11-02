@@ -25,7 +25,7 @@ public class Scanner_Test {
 			assertNotNull(obj);
 			assertTrue(obj instanceof ScanResult);
 			ScanResult result = (ScanResult) obj;
-			assertEquals(result.getLineCount().getLineCount(), 6);
+			assertEquals(result.getLineCount(), 6);
 			assertEquals(result.getReport(), "[Nachali rabotu, Operaciya slojit, Argument 1 2, Argument 2 3, Rezultat 5, Zakonchili rabotu]");
 			assertEquals(result.getLines().size(), 6);
 			
